@@ -101,7 +101,8 @@ namespace QMCTrans
                 DirectoryInfo DIFolder = new DirectoryInfo(fbd.SelectedPath);
                 FileSystemInfo[] files = DIFolder.GetFiles();
                 FileList.BeginUpdate();
-                foreach (var fFile in files) {
+                foreach (var fFile in files)
+                {
                     var foundItem = FileList.FindItemWithText(fFile.FullName);
                     if (foundItem != null)
                         continue;
@@ -158,7 +159,7 @@ namespace QMCTrans
             {
                 string[] lists = new string[FileList.Items.Count];
                 int i = 0;
-                foreach(ListViewItem lvi in FileList.Items)
+                foreach (ListViewItem lvi in FileList.Items)
                 {
                     lists[i++] = lvi.Text;
                 }
@@ -178,15 +179,15 @@ namespace QMCTrans
             {
                 string[] exts = new string[FileList.Items.Count];
                 int i = 0;
-                foreach(ListViewItem lvi in FileList.Items)
+                foreach (ListViewItem lvi in FileList.Items)
                 {
-                    exts[i++] = lvi.SubItems[1].Text; 
+                    exts[i++] = lvi.SubItems[1].Text;
                 }
                 return exts;
             }
         }
 
-        delegate void updateStatue(string str,int num);
+        delegate void updateStatue(string str, int num);
         private void updateStatueToFileList(string str, int num)
         {
             if (FileList.InvokeRequired)
@@ -198,7 +199,7 @@ namespace QMCTrans
             {
                 FileList.BeginUpdate();
                 int i = 0;
-                foreach(ListViewItem lvi in FileList.Items)
+                foreach (ListViewItem lvi in FileList.Items)
                 {
                     if (i != num)
                     {
@@ -238,7 +239,8 @@ namespace QMCTrans
                 do
                 {
                     readSize = bsreadFile.Read(buffer, 0, 8192);
-                    for (int i = 0; i < 8192; i++) {
+                    for (int i = 0; i < 8192; i++)
+                    {
                         buffer[i] ^= Key(offset + i);
                     }
                     offset += readSize;
